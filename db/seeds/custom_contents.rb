@@ -77,6 +77,10 @@ CustomContent.seed_once(:key,
   { key: CrisisMailer::CONTENT_CRISIS_ACKNOWLEDGED,
     placeholders_required: 'creator, group, acknowledger',
     placeholders_optional: 'date' },
+
+  { key: Group::Abteilung::CONTENT_GROUPFINDER_FIELDS_INFO,
+    placeholders_required: '',
+    placeholders_optional: 'max-number-of-coordinates' },
 )
 
 group_membership_id = CustomContent.get(GroupMembershipMailer::CONTENT_GROUP_MEMBERSHIP).id
@@ -107,6 +111,8 @@ black_list_hit_id = CustomContent.get(BlackListMailer::CONTENT_BLACK_LIST_HIT).i
 black_list_attr_hit_id = CustomContent.get(BlackListMailer::CONTENT_BLACK_LIST_ATTR_HIT).id
 crisis_triggered_id = CustomContent.get(CrisisMailer::CONTENT_CRISIS_TRIGGERED).id
 crisis_acknowledged_id = CustomContent.get(CrisisMailer::CONTENT_CRISIS_ACKNOWLEDGED).id
+
+groupfinder_fields_info_id = CustomContent.get(Group::Abteilung::CONTENT_GROUPFINDER_FIELDS_INFO).id
 
 _id =
   CustomContent.get(Event::ParticipationMailer::CONTENT_PARTICIPATION_REMOVED_FROM_WAITING_LIST).id
@@ -483,5 +489,24 @@ CustomContent::Translation.seed_once(:custom_content_id, :locale,
   { custom_content_id: crisis_acknowledged_id,
     locale: 'it',
     label: 'Crisi: E-Mail Informare la persona responsabile riguardo al riconoscimento' },
+
+  { custom_content_id: groupfinder_fields_info_id,
+   locale: 'de',
+   label: 'Pfadi-Finder: Infotext für Felder auf Abteilung',
+   body: 'In den folgenden Feldern könnt ihr die öffentlichen Angaben eurer Abteilung eintragen. ' \
+         'Diese Angaben werden jeweils nächtlich in den Pfadi-Finder unter https://pfadi.swiss übernommen. ' \
+         'Es können bis zu {max-number-of-coordinates} Treffpunkte pro Abteilung definiert werden.'},
+
+  { custom_content_id: groupfinder_fields_info_id,
+   locale: 'fr',
+   label: 'Trouveur des groupes de scout: Texte d\'informations sur donnees de groupe' },
+
+  { custom_content_id: groupfinder_fields_info_id,
+   locale: 'en',
+   label: 'Scout group finder: Informational text for the fields on group'},
+
+  { custom_content_id: groupfinder_fields_info_id,
+   locale: 'it',
+   label: 'Trovatore delle sezioni scout: Testo d\'informazioni su dati della sezione' },
 
 )
